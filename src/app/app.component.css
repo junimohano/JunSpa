@@ -1,0 +1,7 @@
+.chatPosition {
+    width: 300px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    overflow-x: hidden;
+}

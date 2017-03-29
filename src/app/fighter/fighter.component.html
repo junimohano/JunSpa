@@ -1,0 +1,34 @@
+<div class="ui-g">
+    <h1>Fighters</h1>
+</div>
+
+<div class="ui-g">
+    <p-fieldset class="ui-g-12" legend="Search" toggleable="true">
+        <p-dropdown class="ui-g-12 ui-md-4 ui-lg-2" [style]="{'width':'100%'}" [options]="weightClasses" [(ngModel)]="selectedWeightClass" (onChange)="onWeightClassesChange($event)" pTooltip="Weight type" tooltipPosition="top"></p-dropdown>
+
+        <form class="ui-g-12 ui-md-4 ui-lg-2" id="filter">
+            <input type="text" pInputText [(ngModel)]="term" name="term" (ngModelChange)="onChange($event)" pTooltip="Search fighter name" tooltipEvent="focus" />
+        </form>
+    </p-fieldset>
+</div>
+
+<div class="ui-g">
+    <div class="ui-g-12" *ngIf="fighters.length == 0">
+        no result...
+    </div>
+    <div class="ui-g-12 ui-md-6 ui-lg-2" *ngFor="let fighter of fighters; let i=index">
+        <div *ngIf="fighter.title_holder" style="background: red; color: white; padding: 5px;">{{fighter.weight_class.replace('_', ' ')}} Champion</div>
+        <div *ngIf="fighter.fighter_status == 'Active' && fighter.title_holder == false && fighter.rank != null" style="background: darkslateblue; color: white; padding: 5px;">Rank {{fighter.rank}}</div>
+        <div *ngIf="fighter.fighter_status == 'Active' && fighter.title_holder == false && fighter.rank == null" style="padding: 5px;">　</div>
+        <div *ngIf="fighter.fighter_status != 'Active' && fighter.title_holder == false" style="background: gray; color: white; padding: 5px;">Former</div>
+
+
+        <img class="ui-g-12" [src]="fighter.profile_image" (click)="openDetail(i)" [pTooltip]="fighter.first_name + ' ' + fighter.last_name" tooltipPosition="top">
+        <span>{{ fighter.first_name }} {{ fighter.last_name }}</span>
+        <p>{{fighter?.wins}}-{{fighter?.losses}}-{{fighter?.draws}} (W-L-D)</p>
+    </div>
+</div>
+
+<p-paginator [rows]="pagingRows" [totalRecords]="fightersNameFiltered.length" (onPageChange)="paginate($event)"></p-paginator>
+
+<app-fighter-detail #fighterDetail></app-fighter-detail>

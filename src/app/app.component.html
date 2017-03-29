@@ -1,3 +1,10 @@
-<h1>
-  {{title}}
-</h1>
+<app-header *ngIf="auth.authenticated()"></app-header>
+<app-nav *ngIf="auth.authenticated()"></app-nav>
+
+<div class="container">
+    <router-outlet></router-outlet>
+</div>
+
+<app-footer *ngIf="auth.authenticated()"></app-footer>
+
+<app-chat *ngIf="auth.authenticated()" class="chatPosition"></app-chat>

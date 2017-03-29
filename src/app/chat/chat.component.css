@@ -1,0 +1,9 @@
+.chatOutline {
+    border: 3px solid gray;
+    background-color: lightyellow;
+}
+
+.chatBox {
+    max-height: 200px;
+    overflow-y: auto;
+}

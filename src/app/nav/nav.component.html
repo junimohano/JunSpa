@@ -1,0 +1,21 @@
+<div *ngIf="auth.authenticated()">
+    <span>JunSpa</span>
+    <span class="example-spacer"></span>
+    <button pButton [routerLink]="['']" pTooltip="Home">
+        <i class="fa fa-home fa-2x" aria-hidden="true"></i>
+    </button>
+    <button pButton [routerLink]="['/user']" pTooltip="User">
+        <i class="fa fa-user-o fa-2x" aria-hidden="true"></i>
+    </button>
+    <button pButton [routerLink]="['/fighter']" pTooltip="Fighter">
+        <i class="fa fa-circle fa-2x" aria-hidden="true"></i>
+    </button>
+    <button pButton [routerLink]="['/octagonGirl']" pTooltip="OctagonGirl">
+        <i class="fa fa-circle-o fa-2x" aria-hidden="true"></i>
+    </button>
+
+    <button md-menu-item (click)="auth.logout()">
+        <i class="fa fa-sign-out fa-2x" aria-hidden="true"></i>
+        <span>Logout</span>
+    </button>
+</div>

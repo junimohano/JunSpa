@@ -1,0 +1,37 @@
+<p-dialog [(visible)]="display" dismissableMask="true" modal="true" responsive="true">
+
+    <p-header>
+        {{fighter?.first_name}} {{fighter?.last_name}} ({{fighter?.nickname}})
+    </p-header>
+
+    <div style="height: 600px;">
+        <div class="ui-g">
+            <div class="ui-g-12 ui-md-4 ui-lg-3 ui-g-nopad">
+                <div class="ui-g">
+                    <img class="ui-g-12 ui-md-8 ui-lg-12" *ngIf="fighter" [src]="fighter?.thumbnail">
+                    <p-chart class="ui-g-12 ui-md-8 ui-lg-12" #chart type="doughnut" [data]="data" height="300"></p-chart>
+                </div>
+            </div>
+            <div class="ui-g-12 ui-md-1 ui-lg-1">
+            </div>
+            <div class="ui-g-12 ui-md-7 ui-lg-7">
+                <h1>{{fighterDetail?.weightClass}}　</h1>
+                <h2>{{fighter?.wins}}-{{fighter?.losses}}-{{fighter?.draws}} (W-L-D)</h2>
+                <p>Rank : {{fighter?.rank}} <span *ngIf="fighter?.pound_for_pound_rank != null"><strong>[P4P : {{fighter?.pound_for_pound_rank}}]</strong></span></p>
+                <p>From : {{fighterDetail?.from}}</p>
+                <p>Fights Out Of : {{fighterDetail?.fightsOutOf}}</p>
+                <p>Age : {{fighterDetail?.age}}</p>
+                <p>Height : {{fighterDetail?.height}}</p>
+                <p>Weight : {{fighterDetail?.weight}}</p>
+            </div>
+        </div>
+
+        <div class="ui-g" style="margin-bottom: 50px;">
+            <p-galleria class="ui-g-12 ui-md-12 ui-lg-12" [images]="images" showCaption="true" panelWidth="100%" panelHeight="500"></p-galleria>
+        </div>
+    </div>
+    <p-footer>
+
+    </p-footer>
+
+</p-dialog>

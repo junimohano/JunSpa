@@ -1,0 +1,50 @@
+<p-dialog [(visible)]="display" dismissableMask="true" modal="true" responsive="true">
+
+    <p-header>
+        {{octagonGirl?.first_name}} {{octagonGirl?.last_name}}
+    </p-header>
+
+    <div style="height: 600px;">
+        <div class="ui-g">
+            <div class="ui-g-12 ui-md-4 ui-lg-4">
+                <img class="ui-g-12" *ngIf="octagonGirl" [src]="octagonGirl?.medium_profile_picture">
+            </div>
+            <div class="ui-g-12 ui-md-1 ui-lg-1">
+            </div>
+            <div class="ui-g-12 ui-md-7 ui-lg-7">
+                <p>Biography header : {{octagonGirl?.biography_header}}</p>
+                <p>Biography1 : {{octagonGirl?.biography1}}</p>
+                <p>Biography2 : {{octagonGirl?.biography1}}</p>
+                <p>Carreer goals : {{octagonGirl?.career_goals}}</p>
+                <p>City : {{octagonGirl?.city_residing}}</p>
+                <p>State : {{octagonGirl?.state_residing}}</p>
+                <p>Country : {{octagonGirl?.country_residing}}</p>
+                <p>DOB : {{octagonGirl?.date_of_birth}}</p>
+                <p>Favorite Foods : {{octagonGirl?.favorite_foods}}</p>
+                <p>Favorite TVshows : {{octagonGirl?.favoritetvshows}}</p>
+                <p>Height : 1{{octagonGirl?.height}}</p>
+                <p>Weight : {{octagonGirl?.weight}}</p>
+                <p>Quote : {{octagonGirl?.quote}}</p>
+                <p>Description : {{octagonGirl?.short_description}}</p>
+                <p>Store url : {{octagonGirl?.storeurl}}</p>
+                <p>Turn ons : {{octagonGirl?.turn_ons}}</p>
+                <p>Twitter feed file name : {{octagonGirl?.twitter_feed_file_name}}</p>
+                <p>Twitter hastag : {{octagonGirl?.twitter_hastag}}</p>
+                <p>Twitter username : {{octagonGirl?.twitter_username}}</p>
+                <p>Ways to pick up : {{octagonGirl?.ways_to_pick_up}}</p>
+                <p>Website : {{octagonGirl?.websiteurl}}</p>
+                <p>Youtube : {{octagonGirl?.youtube_channelurl}}</p>
+            </div>
+        </div>
+
+        <div class="ui-g">
+            <div class="ui-g-12 ui-md-12 ui-lg-12">
+                <p-galleria class="ui-g-12" [images]="images" showCaption="true" panelWidth="100%" panelHeight="500"></p-galleria>
+            </div>
+        </div>
+    </div>
+    <p-footer>
+
+    </p-footer>
+
+</p-dialog>

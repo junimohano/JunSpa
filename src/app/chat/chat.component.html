@@ -1,0 +1,12 @@
+<button pButton (click)="show()" [style.float]="display ? 'none' : 'right'" [@movePanel]='state' label="Chat"></button>
+<div class="chatOutline" [style.visibility]="display ? 'visible' : 'hidden'" [@movePanel]='state'>
+    <!--<button (click)="login()" *ngIf="!name">Login with Facebook</button>-->
+    <div #chatDiv class="chatBox" (scroll)="onScroll($event)">
+        <div *ngFor="let item of items | async">
+            <strong>{{item.name}}</strong> : {{item.message}}
+        </div>
+    </div>
+
+    <input style="width: 100%;" pInputText placeholder="Chat here..." [(ngModel)]="msgVal" (keyup.enter)="chatSend($event.target.value)">
+
+</div>

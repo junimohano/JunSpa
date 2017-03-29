@@ -1,0 +1,29 @@
+<div class="ui-g">
+    <h1>Octagon Girls</h1>
+</div>
+
+<div class="ui-g">
+    <p-fieldset legend="Search" toggleable="true">
+        <form id="filter">
+            <input type="text" pInputText [(ngModel)]="term" name="term" (ngModelChange)="onChange($event)" pTooltip="Search octagon girl name" tooltipEvent="focus" />
+        </form>
+    </p-fieldset>
+</div>
+
+<div class="ui-g">
+
+    <div class="ui-g-12" *ngIf="octagonGirls.length == 0">
+        no result...
+    </div>
+
+    <div class="ui-g-12 ui-md-6 ui-lg-2" *ngFor="let octagonGirl of octagonGirls | octagonGirlFilter:term; let i=index">
+        <img class="ui-g-12" [src]="octagonGirl.medium_profile_picture" (click)="openDetail(i)" [pTooltip]="octagonGirl.first_name + ' ' + octagonGirl.last_name" tooltipPosition="top">
+        <span> Name : {{ octagonGirl.first_name }} {{ octagonGirl.last_name }}</span>
+        <p>Height : 1{{octagonGirl.height}}</p>
+        <p>Weight : {{octagonGirl.weight}}</p>
+    </div>
+</div>
+
+<p-paginator [rows]="pagingRows" [totalRecords]="octagonGirlsFiltered.length" (onPageChange)="paginate($event)"></p-paginator>
+
+<app-octagon-girl-detail #octagonGirlDetail></app-octagon-girl-detail>
