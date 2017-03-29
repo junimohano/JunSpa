@@ -9,13 +9,13 @@ import { ApiService } from '../shared/services/api.service';
 })
 export class FighterDetailComponent implements OnInit {
 
-  @ViewChild('chart') private chart: UIChart;
+  @ViewChild('chart') chart: UIChart;
   @Input() fighter: Fighter;
 
-  private fighterDetail: FighterDetail;
-  private display = false;
-  private data: any;
-  private images: any[];
+  fighterDetail: FighterDetail;
+  display = false;
+  data: any;
+  images: any[];
 
   constructor(private apiService: ApiService) {
     this.data = {

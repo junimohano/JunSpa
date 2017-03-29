@@ -13,7 +13,7 @@ import { myConfig } from '../shared/auth/auth.config';
 
 export class ProfileEditComponent {
   address: String;
-  constructor(private auth: Auth, private authHttp: AuthHttp, private router: Router) {
+  constructor(public auth: Auth, private authHttp: AuthHttp, private router: Router) {
     if (auth.userProfile.user_metadata && auth.userProfile.user_metadata.address) {
       this.address = auth.userProfile.user_metadata.address;
     }

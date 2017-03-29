@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  constructor(private auth: Auth, private router: Router) { }
+  constructor(public auth: Auth, private router: Router) { }
 
   ngOnInit() {
     if (this.auth.authenticated()) {

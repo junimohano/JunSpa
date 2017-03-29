@@ -8,12 +8,12 @@ import { UIChart } from 'primeng/primeng';
 })
 export class OctagonGirlDetailComponent implements OnInit {
 
-  @ViewChild('chart') private chart: UIChart;
+  @ViewChild('chart') chart: UIChart;
   @Input() octagonGirl: OctagonGirl;
 
-  private display = false;
-  private data: any;
-  private images: any[];
+  display = false;
+  data: any;
+  images: any[];
 
   constructor() {
     this.data = {

@@ -8,7 +8,7 @@ import { Auth } from '../shared/auth/auth.service';
 })
 export class NavComponent implements OnInit {
 
-  constructor(private auth: Auth) { }
+  constructor(public auth: Auth) { }
 
   ngOnInit() {
   }

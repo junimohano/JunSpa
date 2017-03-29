@@ -7,5 +7,5 @@ import { Auth } from '../shared/auth/auth.service';
 })
 
 export class ProfileShowComponent {
-  constructor(private auth: Auth) { }
+  constructor(public auth: Auth) { }
 };
