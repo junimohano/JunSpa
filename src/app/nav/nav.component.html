@@ -1,21 +1,26 @@
-<div *ngIf="auth.authenticated()">
-    <span>JunSpa</span>
-    <span class="example-spacer"></span>
-    <button pButton [routerLink]="['']" pTooltip="Home">
+<div>
+    <button pButton type="button" label="{{ 'MENU.HOME' | translate }}" [routerLink]="['']" pTooltip="{{ 'MENU.HOME' | translate }}">
         <i class="fa fa-home fa-2x" aria-hidden="true"></i>
     </button>
-    <button pButton [routerLink]="['/user']" pTooltip="User">
+    <button pButton type="button" label="{{ 'MENU.BOARD' | translate }}" [routerLink]="['/board']" pTooltip="{{ 'MENU.BOARD' | translate }}">
+        <i class="fa fa-dashboard fa-2x" aria-hidden="true"></i>
+    </button>
+    <button pButton type="button" label="{{ 'MENU.FIGHTER' | translate }}" [routerLink]="['/fighter']" pTooltip="{{ 'MENU.FIGHTER' | translate }}">
         <i class="fa fa-user-o fa-2x" aria-hidden="true"></i>
     </button>
-    <button pButton [routerLink]="['/fighter']" pTooltip="Fighter">
-        <i class="fa fa-circle fa-2x" aria-hidden="true"></i>
+    <button pButton type="button" label="{{ 'MENU.OCTAGON_GIRL' | translate }}" [routerLink]="['/octagonGirl']" pTooltip="{{ 'MENU.OCTAGON_GIRL' | translate }}">
+        <i class="fa fa-user fa-2x" aria-hidden="true"></i>
     </button>
-    <button pButton [routerLink]="['/octagonGirl']" pTooltip="OctagonGirl">
-        <i class="fa fa-circle-o fa-2x" aria-hidden="true"></i>
+    <span class="example-spacer"></span>
+
+    <button *ngIf="auth.authenticated()" pButton type="button" label="{{ 'MENU.LOGOUT' | translate }}" (click)="auth.logout()" pTooltip="{{ 'MENU.LOGOUT' | translate }}">
+        <i class="fa fa-sign-out fa-2x" aria-hidden="true"></i>
     </button>
 
-    <button md-menu-item (click)="auth.logout()">
-        <i class="fa fa-sign-out fa-2x" aria-hidden="true"></i>
-        <span>Logout</span>
+    <button *ngIf="!auth.authenticated()" pButton type="button" label="{{ 'MENU.LOGIN' | translate }}" (click)="auth.login()" pTooltip="{{ 'MENU.LOGIN' | translate }}">
+        <i class="fa fa-sign-in fa-2x" aria-hidden="true"></i>
     </button>
+
+    <p-dropdown [style]="{'width':'150'}" [options]="languages" [(ngModel)]="selectedLanguage" (onChange)="onLanguagesChange($event)" filter="filter"></p-dropdown>
+
 </div>

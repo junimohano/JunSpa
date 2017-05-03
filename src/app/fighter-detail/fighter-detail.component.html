@@ -26,9 +26,12 @@
             </div>
         </div>
 
-        <div class="ui-g" style="margin-bottom: 50px;">
-            <p-galleria class="ui-g-12 ui-md-12 ui-lg-12" [images]="images" showCaption="true" panelWidth="100%" panelHeight="500"></p-galleria>
+        <div class="ui-g">
+            <div class="ui-g-12 ui-md-12 ui-lg-12">
+                <p-galleria *ngIf="images" class="ui-g-12" [images]="images" showCaption="true" panelWidth="100%" panelHeight="500" autoPlay="false"></p-galleria>
+            </div>
         </div>
+
     </div>
     <p-footer>
 

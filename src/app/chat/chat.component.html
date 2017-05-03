@@ -1,4 +1,4 @@
-<button pButton (click)="show()" [style.float]="display ? 'none' : 'right'" [@movePanel]='state' label="Chat"></button>
+<button pButton (click)="show()" [style.float]="display ? 'none' : 'right'" [@movePanel]='state' label="{{ 'CHAT' | translate }}"></button>
 <div class="chatOutline" [style.visibility]="display ? 'visible' : 'hidden'" [@movePanel]='state'>
     <!--<button (click)="login()" *ngIf="!name">Login with Facebook</button>-->
     <div #chatDiv class="chatBox" (scroll)="onScroll($event)">
@@ -7,6 +7,6 @@
         </div>
     </div>
 
-    <input style="width: 100%;" pInputText placeholder="Chat here..." [(ngModel)]="msgVal" (keyup.enter)="chatSend($event.target.value)">
+    <input style="width: 100%;" pInputText placeholder="{{ 'CHAT_MESSAGE' | translate }}" [(ngModel)]="msgVal" (keyup.enter)="chatSend($event.target.value)">
 
 </div>

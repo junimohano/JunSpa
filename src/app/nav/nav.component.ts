@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Auth } from '../shared/auth/auth.service';
+import { SelectItem } from 'primeng/primeng';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-nav',
@@ -8,9 +10,18 @@ import { Auth } from '../shared/auth/auth.service';
 })
 export class NavComponent implements OnInit {
 
-  constructor(public auth: Auth) { }
+  languages: SelectItem[] = [];
+  selectedLanguage = 'English';
+
+  constructor(public auth: Auth, private translate: TranslateService) {
+    this.languages.push({ label: 'English', value: 'en' });
+    this.languages.push({ label: 'Korean', value: 'kr' });
+  }
 
   ngOnInit() {
   }
 
+  onLanguagesChange(event) {
+    this.translate.use(event.value);
+  }
 }

@@ -22,9 +22,11 @@ export class FighterComponent implements OnInit {
   fighter: Fighter;
 
   weightClasses: SelectItem[] = [];
-  selectedWeightClass: string;
+  selectedWeightClass = 'All';
 
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService) {
+    this.weightClasses.push({ label: 'All', value: null });
+   }
 
   ngOnInit() {
     this.apiService.getFighters()
@@ -45,7 +47,7 @@ export class FighterComponent implements OnInit {
         // this.weightClasses.push({ label: 'Lightheavyweight', value: 'Light_Heavyweight' });
         // this.weightClasses.push({ label: 'Heavyweight', value: 'Heavyweight' });
 
-        this.weightClasses.push({ label: 'All', value: null });
+        
         this.fightersOriginalSource.forEach(element => {
           if (this.weightClasses.find(x => x.value === element.weight_class) == null) {
             this.weightClasses.push({ label: element.weight_class.replace('_', ' '), value: element.weight_class });

@@ -1,10 +1,10 @@
 <div class="ui-g">
-    <h1>Fighters</h1>
+    <h1>{{ 'FIGHTERS' | translate }}</h1>
 </div>
 
 <div class="ui-g">
-    <p-fieldset class="ui-g-12" legend="Search" toggleable="true">
-        <p-dropdown class="ui-g-12 ui-md-4 ui-lg-2" [style]="{'width':'100%'}" [options]="weightClasses" [(ngModel)]="selectedWeightClass" (onChange)="onWeightClassesChange($event)" pTooltip="Weight type" tooltipPosition="top"></p-dropdown>
+    <p-fieldset class="ui-g-12" legend="{{ 'SEARCH' | translate }}" toggleable="true">
+        <p-dropdown class="ui-g-12 ui-md-4 ui-lg-2" [style]="{'width':'100%'}" [options]="weightClasses" [(ngModel)]="selectedWeightClass" (onChange)="onWeightClassesChange($event)" filter="filter"></p-dropdown>
 
         <form class="ui-g-12 ui-md-4 ui-lg-2" id="filter">
             <input type="text" pInputText [(ngModel)]="term" name="term" (ngModelChange)="onChange($event)" pTooltip="Search fighter name" tooltipEvent="focus" />

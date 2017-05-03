@@ -42,8 +42,9 @@ export class Auth {
         this.userProfile = JSON.parse(localStorage.getItem('profile'));
 
         // Add callback for lock `authenticated` event
-        this.lock.on("authenticated", (authResult) => {
+        this.lock.on('authenticated', (authResult) => {
             localStorage.setItem('id_token', authResult.idToken);
+            // this.router.navigate(['/']);
 
             // Fetch profile information
             this.lock.getProfile(authResult.idToken, (error, profile) => {
@@ -57,9 +58,6 @@ export class Auth {
                 localStorage.setItem('profile', JSON.stringify(profile));
                 this.userProfile = profile;
             });
-
-            this.router.navigate(['/home']);
-
         });
 
     };
@@ -72,7 +70,8 @@ export class Auth {
     public authenticated() {
         // Check if there's an unexpired JWT
         // It searches for an item in localStorage with key == 'id_token'
-        return tokenNotExpired();
+        // return tokenNotExpired();
+        return tokenNotExpired('id_token');
     };
 
     public logout() {
@@ -82,6 +81,6 @@ export class Auth {
         localStorage.removeItem('redirect_url');
         this.userProfile = undefined;
 
-        this.router.navigate(['/login']);
+        this.router.navigate(['/']);
     };
 }

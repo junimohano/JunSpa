@@ -1,6 +1,9 @@
-<p>home !!!!!!!</p>
+<div>{{ 'HELLO' | translate:param }}</div>
 
-<button (click)="test()">haha</button>
+<button class="btn btn-default" (click)="setLanguage('en')">
+    <span class="flag-icon flag-icon-us"></span>  ENGLISH
+</button>
 
-<p>{{data|json}}</p>
-<p>{{id}}</p>
+<button class="btn btn-default" (click)="setLanguage('kr')">
+    <span class="flag-icon flag-icon-no"></span> KOREAN
+</button>

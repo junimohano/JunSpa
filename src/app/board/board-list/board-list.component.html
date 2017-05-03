@@ -1,0 +1,16 @@
+<p-dataTable [value]="boards" [rows]="10" [paginator]="true" [loading]="loading">
+    <p-header>List of Boards</p-header>
+    <p-column field="boardId" header="No"></p-column>
+    <p-column field="userId" header="Id"></p-column>
+    <p-column field="title" header="Title"></p-column>
+    <p-column field="content" header="Content"></p-column>
+    <p-column field="createdDate" header="Date"></p-column>
+    <p-column>
+        <ng-template let-board="rowData" let-i="rowIndex" pTemplate="body">
+            <button type="button" pButton (click)="selectBoard(board.boardId)" icon="fa-mouse-pointer"></button>
+        </ng-template>
+    </p-column>
+    <p-footer>
+        <button class="ui-button-warning" type="button" pButton (click)="createBoard()" icon="fa-plus-square" label="new"></button>
+    </p-footer>
+</p-dataTable>

@@ -9,6 +9,13 @@ import { AuthHttp } from 'angular2-jwt';
 @Injectable()
 export class ApiService {
 
+  // headers: Headers = new Headers();
+
+  headers: any = {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json'
+  }
+
   constructor(private http: Http, private auth: Auth, private authHttp: AuthHttp) {
     // this.headers.append('Content-Type', 'application/json');
     // this.headers.append('Content-Type', 'text/plain');
@@ -20,17 +27,42 @@ export class ApiService {
   }
 
   getOctagonGirls() {
-    return this.authHttp.get(environment.webApiUrl + '/api/v1/octagonGirls')
+    return this.http.get(environment.webApiUrl + '/api/v1/octagonGirls')
       .map(res => res.json());
   }
 
   getFighters() {
-    return this.authHttp.get(environment.webApiUrl + '/api/v1/fighters')
+    return this.http.get(environment.webApiUrl + '/api/v1/fighters')
       .map(res => res.json());
   }
 
   getFighter(id: number) {
-    return this.authHttp.get(`${environment.webApiUrl}/api/v1/fighters/${String(id)}`)
+    return this.http.get(`${environment.webApiUrl}/api/v1/fighters/${id}`)
+      .map(res => res.json());
+  }
+
+  getBoards() {
+    return this.authHttp.get(`${environment.webApiUrl}/api/v1/boards`)
+      .map(res => res.json());
+  }
+
+  getBoard(id: number) {
+    return this.authHttp.get(`${environment.webApiUrl}/api/v1/boards/${id}`)
+      .map(res => res.json());
+  }
+
+  createBoard(board: Board) {
+    return this.authHttp.post(`${environment.webApiUrl}/api/v1/boards`, board, { headers: this.headers })
+      .map(res => res.json());
+  }
+
+  updateBoard(id: number, board: Board) {
+    return this.authHttp.put(`${environment.webApiUrl}/api/v1/boards/${id}`, board, { headers: this.headers })
+      .map(res => res.json());
+  }
+
+  deleteBoard(id: number) {
+    return this.authHttp.delete(`${environment.webApiUrl}/api/v1/boards/${id}`)
       .map(res => res.json());
   }
 

@@ -1,9 +1,9 @@
 <div class="ui-g">
-    <h1>Octagon Girls</h1>
+    <h1>{{ 'OCTAGON_GIRLS' | translate }}</h1>
 </div>
 
 <div class="ui-g">
-    <p-fieldset legend="Search" toggleable="true">
+    <p-fieldset legend="{{ 'SEARCH' | translate }}" toggleable="true">
         <form id="filter">
             <input type="text" pInputText [(ngModel)]="term" name="term" (ngModelChange)="onChange($event)" pTooltip="Search octagon girl name" tooltipEvent="focus" />
         </form>

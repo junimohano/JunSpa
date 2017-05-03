@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../shared/services/api.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-home',
@@ -8,20 +9,15 @@ import { ApiService } from '../shared/services/api.service';
 })
 export class HomeComponent implements OnInit {
 
-  data: string;
-  id: string;
-  constructor(private apiService: ApiService) { }
+  param = { value: 'world' };
+
+  constructor(private translate: TranslateService) { }
 
   ngOnInit() {
-    this.id = localStorage.getItem('id_token');
   }
 
-  test() {
-    this.apiService.getTest()
-      .subscribe(
-      data => this.data = JSON.stringify(data),
-      error => this.data = error._body || error
-      );
+  setLanguage(lang) {
+    this.translate.use(lang);
   }
 
 }
