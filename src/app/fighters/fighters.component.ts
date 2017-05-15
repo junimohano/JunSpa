@@ -1,14 +1,14 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ApiService } from '../shared/services/api.service';
-import { FighterDetailComponent } from '../fighter-detail/fighter-detail.component';
+import { FighterDetailComponent } from './fighter-detail/fighter-detail.component';
 import { SelectItem } from 'primeng/primeng';
+import { FighterService } from 'app/fighters/shared/fighter.service';
 
 @Component({
-  selector: 'app-fighter',
-  templateUrl: './fighter.component.html',
-  styleUrls: ['./fighter.component.css']
+  selector: 'app-fighters',
+  templateUrl: './fighters.component.html',
+  styleUrls: ['./fighters.component.css']
 })
-export class FighterComponent implements OnInit {
+export class FightersComponent implements OnInit {
 
   @ViewChild('fighterDetail') fighterDetail: FighterDetailComponent;
 
@@ -24,12 +24,12 @@ export class FighterComponent implements OnInit {
   weightClasses: SelectItem[] = [];
   selectedWeightClass = 'All';
 
-  constructor(private apiService: ApiService) {
+  constructor(private fighterService: FighterService) {
     this.weightClasses.push({ label: 'All', value: null });
-   }
+  }
 
   ngOnInit() {
-    this.apiService.getFighters()
+    this.fighterService.getFighters()
       .subscribe(result => {
         this.fightersOriginalSource = result;
         this.fightersWeightClassFiltered = this.fightersOriginalSource;
@@ -47,7 +47,6 @@ export class FighterComponent implements OnInit {
         // this.weightClasses.push({ label: 'Lightheavyweight', value: 'Light_Heavyweight' });
         // this.weightClasses.push({ label: 'Heavyweight', value: 'Heavyweight' });
 
-        
         this.fightersOriginalSource.forEach(element => {
           if (this.weightClasses.find(x => x.value === element.weight_class) == null) {
             this.weightClasses.push({ label: element.weight_class.replace('_', ' '), value: element.weight_class });

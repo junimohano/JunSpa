@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { UIChart } from 'primeng/primeng';
-import { ApiService } from '../shared/services/api.service';
+import { FighterService } from 'app/fighters/shared/fighter.service';
 
 @Component({
   selector: 'app-fighter-detail',
@@ -17,7 +17,7 @@ export class FighterDetailComponent implements OnInit {
   data: any;
   images: any[];
 
-  constructor(private apiService: ApiService) {
+  constructor(private fighterService: FighterService) {
     this.data = {
       labels: [],
       datasets: [
@@ -43,7 +43,7 @@ export class FighterDetailComponent implements OnInit {
     this.images.push({ source: this.fighter.right_full_body_image, alt: 'Right image', title: '4' });
 
     this.fighterDetail = null;
-    this.apiService.getFighter(this.fighter.id)
+    this.fighterService.getFighter(this.fighter.id)
       .subscribe(result => {
         this.fighterDetail = result;
 

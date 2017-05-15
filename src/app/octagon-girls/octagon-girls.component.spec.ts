@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BoardEditComponent } from './board-edit.component';
+import { OctagonGirlsComponent } from './octagon-girls.component';
 
-describe('BoardEditComponent', () => {
-  let component: BoardEditComponent;
-  let fixture: ComponentFixture<BoardEditComponent>;
+describe('OctagonGirlsComponent', () => {
+  let component: OctagonGirlsComponent;
+  let fixture: ComponentFixture<OctagonGirlsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BoardEditComponent ]
+      declarations: [ OctagonGirlsComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BoardEditComponent);
+    fixture = TestBed.createComponent(OctagonGirlsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

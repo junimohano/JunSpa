@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from "app/shared/services/api.service";
-import { Router } from "@angular/router";
+import { Router } from '@angular/router';
+import { BoardService } from '../shared/board.service';
 
 @Component({
   selector: 'app-board-list',
@@ -10,12 +10,12 @@ import { Router } from "@angular/router";
 export class BoardListComponent implements OnInit {
 
   boards: Board[];
-  loading: boolean = true;
+  loading = true;
 
-  constructor(private apiService: ApiService, private router: Router) { }
+  constructor(private boardService: BoardService, private router: Router) { }
 
   ngOnInit() {
-    this.apiService.getBoards()
+    this.boardService.getBoards()
       .subscribe(result => {
         this.boards = result;
         this.loading = false;
@@ -23,11 +23,11 @@ export class BoardListComponent implements OnInit {
   }
 
   selectBoard(id: number) {
-    this.router.navigate(['/board', 'edit'], { queryParams: { id: id } });
+    this.router.navigate(['/boards', 'detail'], { queryParams: { id: id } });
   }
 
   createBoard() {
-    this.router.navigate(['/board', 'edit']);
+    this.router.navigate(['/boards', 'detail']);
   }
 
 }

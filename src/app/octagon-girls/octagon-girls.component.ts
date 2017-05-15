@@ -1,14 +1,14 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ApiService } from '../shared/services/api.service';
-import { OctagonGirlFilterPipe } from '../shared/filters/octagon-girl-filter.pipe';
-import { OctagonGirlDetailComponent } from '../octagon-girl-detail/octagon-girl-detail.component';
+import { OctagonGirlService } from './shared/octagon-girl.service';
+import { OctagonGirlFilterPipe } from './shared/octagon-girl-filter.pipe';
+import { OctagonGirlDetailComponent } from './octagon-girl-detail/octagon-girl-detail.component';
 
 @Component({
   selector: 'app-octagon-girl',
-  templateUrl: './octagon-girl.component.html',
-  styleUrls: ['./octagon-girl.component.css']
+  templateUrl: './octagon-girls.component.html',
+  styleUrls: ['./octagon-girls.component.css']
 })
-export class OctagonGirlComponent implements OnInit {
+export class OctagonGirlsComponent implements OnInit {
 
   @ViewChild('octagonGirlDetail') octagonGirlDetail: OctagonGirlDetailComponent;
 
@@ -19,10 +19,10 @@ export class OctagonGirlComponent implements OnInit {
   octagonGirls: OctagonGirl[] = [];
   display = false;
 
-  constructor(private apiService: ApiService) { }
+  constructor(private octagonGirlService: OctagonGirlService) { }
 
   ngOnInit() {
-    this.apiService.getOctagonGirls()
+    this.octagonGirlService.getOctagonGirls()
       .subscribe(result => {
         this.octagonGirlsOriginalSource = result;
         this.setFilter('');
@@ -56,10 +56,10 @@ export class OctagonGirlComponent implements OnInit {
     if (event.first === 0) {
       event.page = 1;
     }
-    //event.first = Index of the first record
-    //event.rows = Number of rows to display in new page
-    //event.page = Index of the new page
-    //event.pageCount = Total number of pages
+    // event.first = Index of the first record
+    // event.rows = Number of rows to display in new page
+    // event.page = Index of the new page
+    // event.pageCount = Total number of pages
   }
 
 }

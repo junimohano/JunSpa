@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params, Router } from "@angular/router";
-import { ApiService } from "../../shared/services/api.service";
-import { FormBuilder, Validators, FormGroup, FormControl } from "@angular/forms";
-import { Message } from "primeng/primeng";
-import { Auth } from "../../shared/auth/auth.service";
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms';
+import { Message } from 'primeng/primeng';
+import { Auth } from '../../shared/auth/auth.service';
+import { BoardService } from '../shared/board.service';
 
 @Component({
-  selector: 'app-board-edit',
-  templateUrl: './board-edit.component.html',
-  styleUrls: ['./board-edit.component.css']
+  selector: 'app-board-detail',
+  templateUrl: './board-detail.component.html',
+  styleUrls: ['./board-detail.component.css']
 })
-export class BoardEditComponent implements OnInit {
+export class BoardDetailComponent implements OnInit {
 
   msgs: Message[] = [];
   form: FormGroup;
@@ -25,7 +25,8 @@ export class BoardEditComponent implements OnInit {
   };
   isNew = false;
 
-  constructor(private auth: Auth, private apiService: ApiService, private router: Router, private activatedRoute: ActivatedRoute, private fb: FormBuilder) {
+  constructor(private auth: Auth, private boardService: BoardService, private router: Router,
+    private activatedRoute: ActivatedRoute, private fb: FormBuilder) {
     this.form = this.fb.group({
       'title': ['', Validators.required],
       'content': ['', Validators.required]
@@ -36,17 +37,17 @@ export class BoardEditComponent implements OnInit {
   ngOnInit() {
     // subscribe to router event
     this.activatedRoute.queryParams.subscribe((params: Params) => {
-      let id = params['id'];
+      const id = params['id'];
 
-      if (id == undefined) {
+      if (id === undefined) {
         this.isNew = true;
       } else {
-        this.apiService.getBoard(id)
+        this.boardService.getBoard(id)
           .subscribe(result => {
             this.board = result;
 
-            this.form.controls["title"].setValue(this.board.title);
-            this.form.controls["content"].setValue(this.board.content);
+            this.form.controls['title'].setValue(this.board.title);
+            this.form.controls['content'].setValue(this.board.content);
 
           }, error => alert(error));
       }
@@ -57,25 +58,25 @@ export class BoardEditComponent implements OnInit {
   onSubmit(value: string) {
 
     this.board.userId = this.auth.userProfile.identities[0].user_id;
-    this.board.title = this.form.controls["title"].value;
-    this.board.content = this.form.controls["content"].value;
+    this.board.title = this.form.controls['title'].value;
+    this.board.content = this.form.controls['content'].value;
 
     if (this.isNew) {
-      this.apiService.createBoard(this.board)
+      this.boardService.createBoard(this.board)
         .subscribe(result => {
           this.msgs = [];
           this.msgs.push({ severity: 'info', summary: 'Success', detail: 'Board Added' });
 
-          this.router.navigate(['/board']);
+          this.router.navigate(['/boards']);
 
         }, error => alert(error));
     } else {
-      this.apiService.updateBoard(this.board.boardId, this.board)
+      this.boardService.updateBoard(this.board.boardId, this.board)
         .subscribe(result => {
           this.msgs = [];
           this.msgs.push({ severity: 'info', summary: 'Success', detail: 'Board Updated' });
 
-          this.router.navigate(['/board']);
+          this.router.navigate(['/boards']);
 
         }, error => alert(error));
     }
@@ -83,9 +84,9 @@ export class BoardEditComponent implements OnInit {
   }
 
   deleteBoard() {
-    this.apiService.deleteBoard(this.board.boardId)
+    this.boardService.deleteBoard(this.board.boardId)
       .subscribe(result => {
-        this.router.navigate(['/board']);
+        this.router.navigate(['/boards']);
       }, error => alert(error));
   }
 

@@ -2,7 +2,7 @@ import {
   Component, OnInit, ViewChild, ElementRef, AfterViewChecked,
   trigger, state, style, transition, animate, keyframes
 } from '@angular/core';
-import { AngularFire, AuthProviders, AuthMethods, FirebaseListObservable } from 'angularfire2';
+import { FirebaseListObservable, AngularFireDatabase } from 'angularfire2/database';
 import { Auth } from '../shared/auth/auth.service';
 
 @Component({
@@ -54,7 +54,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
 
   state = 'inactive';
 
-  constructor(private auth: Auth, private af: AngularFire) {
+  constructor(private auth: Auth, private db: AngularFireDatabase) {
     this.getChat();
 
     // this.af.auth.subscribe(auth1 => {
@@ -65,7 +65,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
   }
 
   getChat() {
-    this.items = this.af.database.list('/messages', {
+    this.items = this.db.list('/messages', {
       query: {
         limitToLast: this.limit
       }

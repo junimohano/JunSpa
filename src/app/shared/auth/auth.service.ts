@@ -7,7 +7,7 @@ import { environment } from '../../../environments/environment';
 
 // Avoid name not found warnings
 // declare var Auth0Lock: any;
-let Auth0Lock = require('auth0-lock').default;
+const Auth0Lock = require('auth0-lock').default;
 
 @Injectable()
 export class Auth {
