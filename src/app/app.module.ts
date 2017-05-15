@@ -5,6 +5,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedAppModule } from './shared/shared-app.module'
 import { AppRoutingModule } from './app-routing.module';
 
+import { StoreModule } from '@ngrx/store';
+import { counterReducer } from './shared/counter';
+
 import { AppComponent } from './app.component';
 import { NavComponent } from './shared/components/nav/nav.component';
 import { HomeComponent } from './home/home.component';
@@ -29,7 +32,8 @@ import { ChatComponent } from './chat/chat.component';
     BrowserModule,
     BrowserAnimationsModule,
     SharedAppModule,
-    AppRoutingModule
+    AppRoutingModule,
+    StoreModule.provideStore({ counter: counterReducer })
   ],
   providers: [],
   bootstrap: [AppComponent]

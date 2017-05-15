@@ -7,3 +7,9 @@
 <button class="btn btn-default" (click)="setLanguage('kr')">
     <span class="flag-icon flag-icon-no"></span> KOREAN
 </button>
+
+<button (click)="increment()">Increment</button>
+<div>Current Count: {{ counter | async }}</div>
+<button (click)="decrement()">Decrement</button>
+
+<button (click)="reset()">Reset Counter</button>
