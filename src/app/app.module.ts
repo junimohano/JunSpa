@@ -6,9 +6,9 @@ import { SharedAppModule } from './shared/shared-app.module'
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
-import { NavComponent } from './nav/nav.component';
+import { NavComponent } from './shared/components/nav/nav.component';
 import { HomeComponent } from './home/home.component';
-import { FooterComponent } from './footer/footer.component';
+import { FooterComponent } from './shared/components/footer/footer.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ProfileShowComponent } from './profile/profile-show.component';
 import { ProfileEditComponent } from './profile/profile-edit.component';

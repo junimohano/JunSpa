@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Auth } from '../shared/auth/auth.service';
+import { Auth } from '../../auth/auth.service';
 import { SelectItem } from 'primeng/primeng';
 import { TranslateService } from '@ngx-translate/core';
 
