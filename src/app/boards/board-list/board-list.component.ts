@@ -5,7 +5,7 @@ import { BoardService } from '../shared/board.service';
 @Component({
   selector: 'app-board-list',
   templateUrl: './board-list.component.html',
-  styleUrls: ['./board-list.component.css']
+  styleUrls: ['./board-list.component.scss']
 })
 export class BoardListComponent implements OnInit {
 

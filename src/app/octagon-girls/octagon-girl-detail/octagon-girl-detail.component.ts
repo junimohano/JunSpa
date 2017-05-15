@@ -4,7 +4,7 @@ import { UIChart } from 'primeng/primeng';
 @Component({
   selector: 'app-octagon-girl-detail',
   templateUrl: './octagon-girl-detail.component.html',
-  styleUrls: ['./octagon-girl-detail.component.css']
+  styleUrls: ['./octagon-girl-detail.component.scss']
 })
 export class OctagonGirlDetailComponent implements OnInit {
 

@@ -6,7 +6,7 @@ import { OctagonGirlDetailComponent } from './octagon-girl-detail/octagon-girl-d
 @Component({
   selector: 'app-octagon-girl',
   templateUrl: './octagon-girls.component.html',
-  styleUrls: ['./octagon-girls.component.css']
+  styleUrls: ['./octagon-girls.component.scss']
 })
 export class OctagonGirlsComponent implements OnInit {
 

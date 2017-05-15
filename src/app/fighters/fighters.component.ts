@@ -6,7 +6,7 @@ import { FighterService } from 'app/fighters/shared/fighter.service';
 @Component({
   selector: 'app-fighters',
   templateUrl: './fighters.component.html',
-  styleUrls: ['./fighters.component.css']
+  styleUrls: ['./fighters.component.scss']
 })
 export class FightersComponent implements OnInit {
 
